@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="new commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Composants/nameHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/nameHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/nameHouse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +76,7 @@
       <updated>1678374287103</updated>
       <workItem from="1678374288848" duration="118000" />
       <workItem from="1678374437863" duration="1273000" />
-      <workItem from="1678375713631" duration="9814000" />
+      <workItem from="1678375713631" duration="10694000" />
     </task>
     <task id="LOCAL-00001" summary="new commit">
       <created>1678375002702</created>
@@ -94,7 +85,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678375002702</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new commit">
+      <created>1678385552972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678385552972</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new commit">
+      <created>1678385561982</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678385561982</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

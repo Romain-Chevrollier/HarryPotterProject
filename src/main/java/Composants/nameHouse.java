@@ -6,7 +6,7 @@ public enum nameHouse {
     Hufflepuff,
     Ravenclaw,
     Slytherin,
-    Gryffondor,
+    Gryffondor;
 
     private static final Random PRNG = new Random();
 
