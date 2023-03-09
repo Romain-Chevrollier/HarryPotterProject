@@ -9,14 +9,14 @@ public class Wand {
     static int size;
     
     public static void chooseWand(){
-
+        Wand wand = new Wand();
     }
 
     public static void chooseCore(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the core of your wand :");
         System.out.println(java.util.Arrays.asList(Core.values()));
-        int numberCore = scanner.nextInt();
+        
         
     }
 
