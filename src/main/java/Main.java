@@ -6,10 +6,13 @@ public class Main {
     public static void main(String[] args){
         //introduction();
         //chooseName();
-        chooseCore();
+        Wand.chooseWand();
+        Wizard.choosePet();
+        House.chooseHouse();
 
 
     }
+
 
     private static void introduction(){
         System.out.println("Welcome to Hogwarts !");
@@ -19,9 +22,5 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your wizard name :");
         String name = scanner.nextLine();
-    }
-
-    private static void chooseWand(){
-        int size = Wand.size;
     }
 }
