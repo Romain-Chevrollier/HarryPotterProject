@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         //introduction();
-        //chooseName();
-        Wand.chooseWand();
-        Wizard.choosePet();
-        House.chooseHouse();
+        createWizard();
 
 
     }
@@ -18,9 +15,18 @@ public class Main {
         System.out.println("Welcome to Hogwarts !");
     }
 
-    private static void chooseName(){
+    private static String chooseName(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your wizard name :");
         String name = scanner.nextLine();
+        return name;
+    }
+
+    private static void createWizard(){
+        String name = chooseName();
+        Pet pet = Wizard.choosePet();
+        Wand wand = Wand.chooseWand();
+        House house = SortingHat.chooseHouse();
+        System.out.println(name + pet + wand + house);
     }
 }

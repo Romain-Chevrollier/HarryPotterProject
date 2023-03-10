@@ -1,7 +1,8 @@
 package Composants;
 
 import java.util.Scanner;
-
+import lombok.*;
+@Getter @Setter
 public class Wizard {
     static Pet pet;
     static Wand wand;
@@ -9,7 +10,8 @@ public class Wizard {
     List<Spell> knownsSpell;
     List<Potion> potions;
 
-    public static void choosePet(){
+
+    public static Pet choosePet(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the pet that you want :");
         int count = 1;
@@ -37,6 +39,6 @@ public class Wizard {
                 choosedPet = Pet.randomPet();
                 break;
         }
-        Wizard.pet = choosedPet;
+        return choosedPet;
     }
 }

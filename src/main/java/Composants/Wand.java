@@ -8,13 +8,13 @@ public class Wand {
     static Core core;
     static int size;
     
-    public static void chooseWand(){
+    public static Wand chooseWand(){
         Core core = chooseCore();
         int size = chooseSize();
         Wand wand = new Wand();
         Wand.core = core;
         Wand.size = size;
-        Wizard.wand = wand;
+        return wand;
     }
 
     public static Core chooseCore(){
