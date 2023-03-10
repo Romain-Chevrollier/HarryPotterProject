@@ -1,23 +1,25 @@
 package Composants;
 
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import lombok.*;
-@Getter @Setter
+
 public class Wand {
-    static Core core;
-    static int size;
-    
+    @Setter @Getter static Core core;
+    @Setter @Getter static int size;
+
+
+
     public static Wand chooseWand(){
-        Core core = chooseCore();
-        int size = chooseSize();
+
         Wand wand = new Wand();
-        Wand.core = core;
-        Wand.size = size;
+        wand.setCore(chooseCore());
+        wand.setSize(chooseSize());
         return wand;
     }
 
-    public static Core chooseCore(){
+    private static Core chooseCore(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the core of your wand :");
         int count = 1;

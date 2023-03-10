@@ -1,5 +1,6 @@
 package Composants;
 
+import java.util.List;
 import java.util.Scanner;
 import lombok.*;
 @Getter @Setter
@@ -7,8 +8,8 @@ public class Wizard {
     static Pet pet;
     static Wand wand;
     static House house;
-    List<Spell> knownsSpell;
     List<Potion> potions;
+    List<Spell> knownSpells;
 
 
     public static Pet choosePet(){

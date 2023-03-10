@@ -27,6 +27,6 @@ public class Main {
         Pet pet = Wizard.choosePet();
         Wand wand = Wand.chooseWand();
         House house = SortingHat.chooseHouse();
-        System.out.println(name + pet + wand + house);
+        System.out.println(wand.getCore());
     }
 }

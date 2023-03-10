@@ -1,6 +1,5 @@
 package Composants;
 
-
 import java.util.Random;
 
 public enum Pet {
