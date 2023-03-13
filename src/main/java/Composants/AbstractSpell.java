@@ -1,8 +1,9 @@
 package Composants;
 
 public abstract class AbstractSpell {
-    String nom;
+    String name;
     String description;
-    int pourcentageDegat;
+    int dividedDamage;
+    int accuracy;
 
 }

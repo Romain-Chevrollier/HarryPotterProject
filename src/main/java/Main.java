@@ -23,10 +23,13 @@ public class Main {
     }
 
     private static void createWizard(){
-        String name = chooseName();
-        Pet pet = Wizard.choosePet();
-        Wand wand = Wand.chooseWand();
-        House house = SortingHat.chooseHouse();
-        System.out.println(wand.getCore());
+        Wizard wizard = new Wizard();
+        wizard.setName(chooseName());
+        wizard.setPet(Pet.choosePet());
+        wizard.setWand(Wand.chooseWand());
+        wizard.setHouse(SortingHat.chooseHouse());
+        wizard.setHealth(50);
+        wizard.setXp(0);
+
     }
 }

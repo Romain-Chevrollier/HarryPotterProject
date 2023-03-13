@@ -68,7 +68,7 @@ public class Wand {
         return choosedCore;
     }
 
-    public static int chooseSize(){
+    private static int chooseSize(){
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the size of your wand :");
