@@ -1,9 +1,10 @@
 package Composants;
-
+import lombok.*;
 public abstract class AbstractSpell {
-    String name;
-    String description;
-    int dividedDamage;
-    int accuracy;
+    @Getter @Setter String name;
+    @Getter @Setter String description;
+    @Getter @Setter int dividedDamage;
+    @Getter @Setter int accuracy;
+
 
 }
