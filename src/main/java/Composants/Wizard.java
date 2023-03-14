@@ -10,8 +10,8 @@ public class Wizard extends Character{
     @Getter @Setter static House house;
     @Getter @Setter int level;
     @Getter @Setter int xp;
-    List<Potion> potions;
-    List<Spell> knownSpells;
+    @Getter @Setter List<Potion> potions;
+    @Getter @Setter List<Spell> knownSpells;
 
 
     void defend(){
