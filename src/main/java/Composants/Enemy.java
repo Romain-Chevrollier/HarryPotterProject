@@ -20,12 +20,35 @@ public class Enemy extends Character{
 
         return newEnemy;
     }
+    private static void enemyTurn(Wizard wizard, Enemy enemy){
+        wizard.setCurrentHealth(wizard.getCurrentHealth()-enemy.getAttackPower());
+        System.out.println(wizard.getCurrentHealth());
+    }
+
+    public static boolean endFight(Wizard wizard, Enemy enemy){
+        int wizardCurrentHealth = wizard.getCurrentHealth();
+        int enemyCurrentHealth = enemy.getCurrentHealth();
+        if (wizardCurrentHealth <= 0){
+            System.out.println(wizard.getMaxHealth());
+            System.out.println(wizardCurrentHealth);
+            System.out.println("You died");
+            return true;
+        }else if(enemyCurrentHealth <= 0){
+            System.out.println("You won the battle");
+            return true;
+        }
+        return false;
+    }
+
     public static void simpleFight(Wizard wizard,int numberChapter){
-        createEnemy(numberChapter);
-        boolean endFight = false;
-        while(!endFight){
-            wizardTurn(wizard);
-            enemyTurn();
+        Enemy enemy = createEnemy(numberChapter);
+        wizard.setCurrentHealth(wizard.getMaxHealth());
+        enemy.setCurrentHealth(enemy.getMaxHealth());
+        boolean stateOfFight = false;
+        while(!stateOfFight){
+            stateOfFight = wizardTurn(wizard,enemy);
+            enemyTurn(wizard,enemy);
+
         }
     }
 }

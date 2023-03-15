@@ -19,20 +19,24 @@ public class Wizard extends Character{
 
     }
 
-    public static void wizardTurn(Wizard wizard){
-        menuWizardFight(wizard);
+    public static boolean wizardTurn(Wizard wizard, Enemy enemy){
+        menuWizardFight(wizard,enemy);
+        System.out.println(enemy.getCurrentHealth());
+        boolean stateOfFight = Enemy.endFight(wizard, enemy);
+        return stateOfFight;
     }
 
-    private static void menuWizardFight(Wizard wizard){
+    private static void menuWizardFight(Wizard wizard,Enemy enemy){
         Scanner scanner = new Scanner(System.in);
         System.out.println("What do you want to do ? \n 1.Attack \n 2.Inventory");
         int numberChoice = scanner.nextInt();
         switch(numberChoice){
             case 1:
-                Spell.chooseSpell(wizard);
-
+                Spell choosedSpell = Spell.chooseSpell(wizard);
+                Spell.useSpell(choosedSpell, enemy, wizard);
+                break;
             case 2:
-
+                break;
         }
     }
 }

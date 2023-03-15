@@ -3,6 +3,7 @@ package Composants;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 public class Spell extends AbstractSpell{
 
     //static List<Spell> spellList = new ArrayList<Spell>();
@@ -44,7 +45,7 @@ public class Spell extends AbstractSpell{
         int count = 1;
         for (Spell i : knownSpells) {
             System.out.print(count + ".");
-            System.out.println(i);
+            System.out.println(i.getName());
             count += 1;
         }
         int numberSpell = scanner.nextInt();
@@ -52,8 +53,32 @@ public class Spell extends AbstractSpell{
         return choosedSpell;
     }
 
-    public static void useSpell(Spell choosedSpell){
-        choosedSpell.getAccuracy();
+    public static void useSpell(Spell choosedSpell, Enemy enemy, Wizard wizard){
+        Random PRNG = new Random();
+        int Acc = choosedSpell.getAccuracy();
+        int dividedDamage = choosedSpell.getDividedDamage();
+
+        if (PRNG.nextInt(100) < Acc){
+            int wizardAttackPower = wizard.getAttackPower();
+            int realDamage = wizardAttackPower - (wizardAttackPower * 40/100);
+            enemy.setCurrentHealth(enemy.getCurrentHealth()- realDamage);
+
+        }else{
+            System.out.println("You missed !");
+        }
+
+    }
+    public static void learnBasicSpell(List<Spell> knownSpells){
+        System.out.println("In this class you will learn your first spell. The basic spell.");
+        System.out.println("What does the spell do ?");
+
+        Spell basicSpell = new Spell();
+        basicSpell.setName("Basic Spell");
+        basicSpell.setDescription("Shoot a small ball of concentrated magic.");
+        basicSpell.setAccuracy(100);
+        basicSpell.setDividedDamage(50);
+
+        knownSpells.add(basicSpell);
     }
 
     private static void learnWingardiumLeviosa(List<Spell> knownSpells){
