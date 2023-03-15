@@ -42,14 +42,14 @@ public class Main {
 
     private static void menu(Wizard wizard,int numberChapter){
         Scanner scanner = new Scanner(System.in);
-        System.out.print("You have the choice between : 1.Learning a new spell 2.Fight an enemy 3.Challenge the next chapter");
+        System.out.println("You have the choice between : 1.Learning a new spell 2.Fight an enemy 3.Challenge the next chapter");
         int numberChoice = scanner.nextInt();
         switch(numberChoice){
             case 1:
                 learnSpell(wizard);
                 break;
             case 2:
-                simpleFight(numberChapter);
+                simpleFight(wizard,numberChapter);
                 break;
             case 3:
                 nextChapter();

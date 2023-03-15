@@ -2,7 +2,8 @@ package Composants;
 
 import java.util.List;
 import java.util.Scanner;
-import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
 
 public class Wizard extends Character{
     @Getter @Setter static Pet pet;
@@ -16,5 +17,22 @@ public class Wizard extends Character{
 
     void defend(){
 
+    }
+
+    public static void wizardTurn(Wizard wizard){
+        menuWizardFight(wizard);
+    }
+
+    private static void menuWizardFight(Wizard wizard){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What do you want to do ? \n 1.Attack \n 2.Inventory");
+        int numberChoice = scanner.nextInt();
+        switch(numberChoice){
+            case 1:
+                Spell.chooseSpell(wizard);
+
+            case 2:
+
+        }
     }
 }

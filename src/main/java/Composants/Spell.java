@@ -2,7 +2,7 @@ package Composants;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
 public class Spell extends AbstractSpell{
 
     //static List<Spell> spellList = new ArrayList<Spell>();
@@ -35,6 +35,25 @@ public class Spell extends AbstractSpell{
                     break;
                 }
         }
+    }
+
+    public static Spell chooseSpell(Wizard wizard){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What spell do you want to use ?");
+        List<Spell> knownSpells = wizard.getKnownSpells();
+        int count = 1;
+        for (Spell i : knownSpells) {
+            System.out.print(count + ".");
+            System.out.println(i);
+            count += 1;
+        }
+        int numberSpell = scanner.nextInt();
+        Spell choosedSpell = knownSpells.get(numberSpell - 1);
+        return choosedSpell;
+    }
+
+    public static void useSpell(Spell choosedSpell){
+        choosedSpell.getAccuracy();
     }
 
     private static void learnWingardiumLeviosa(List<Spell> knownSpells){
