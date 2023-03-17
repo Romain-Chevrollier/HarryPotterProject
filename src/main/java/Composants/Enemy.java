@@ -1,10 +1,12 @@
 package Composants;
 
+
+
 import java.util.Random;
 
 import static Composants.Wizard.wizardTurn;
 
-public class Enemy extends Character{
+public class Enemy extends AbstractEnemy{
 
 
     private static Enemy createEnemy(int numberChapter){
@@ -15,26 +17,30 @@ public class Enemy extends Character{
 
         int randomAttack = PRNG.nextInt(15);
         int randomHealth = PRNG.nextInt(40);
+        int randomXp = PRNG.nextInt(50);
         newEnemy.setAttackPower(randomAttack*(1+numberChapter*(10/100)));
-        newEnemy.setMaxHealth(randomHealth+40*(1+numberChapter*(20/100)));
-
+        newEnemy.setMaxHealth(randomHealth+20*(1+numberChapter*(20/100)));
+        newEnemy.setDropXp(randomXp);
         return newEnemy;
     }
     private static void enemyTurn(Wizard wizard, Enemy enemy){
-        wizard.setCurrentHealth(wizard.getCurrentHealth()-enemy.getAttackPower());
-        System.out.println(wizard.getCurrentHealth());
+        if (wizard.getCurrentHealth() > 0 && enemy.getCurrentHealth() >0){
+            wizard.setCurrentHealth(wizard.getCurrentHealth()-enemy.getAttackPower());
+            System.out.println("The enemy has " + enemy.getAttackPower() + " attack power");
+            System.out.println("You have " + wizard.getCurrentHealth()+ " health point");
+        }
+
     }
 
     public static boolean endFight(Wizard wizard, Enemy enemy){
         int wizardCurrentHealth = wizard.getCurrentHealth();
         int enemyCurrentHealth = enemy.getCurrentHealth();
         if (wizardCurrentHealth <= 0){
-            System.out.println(wizard.getMaxHealth());
-            System.out.println(wizardCurrentHealth);
             System.out.println("You died");
             return true;
         }else if(enemyCurrentHealth <= 0){
             System.out.println("You won the battle");
+            Wizard.manageXp(wizard, enemy);
             return true;
         }
         return false;
@@ -48,7 +54,7 @@ public class Enemy extends Character{
         while(!stateOfFight){
             stateOfFight = wizardTurn(wizard,enemy);
             enemyTurn(wizard,enemy);
-
         }
+        Wizard.menu(wizard, 0);
     }
 }

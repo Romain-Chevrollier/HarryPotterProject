@@ -10,32 +10,34 @@ public class Spell extends AbstractSpell{
 
 
     public static void learnSpell(Wizard wizard){
-        System.out.print("In this class you will learn a new spell.");
         int wizardLevel = wizard.getLevel();
+        ArrayList cloneKnownSpells = new ArrayList(wizard.getKnownSpells());
         switch(wizardLevel){
             case 1:
-                for (Spell i : wizard.getKnownSpells()){
+                for (Object i : cloneKnownSpells){
                     if (!i.equals("wingardiumLeviosa")) {
                         learnWingardiumLeviosa(wizard.getKnownSpells());
                     }
-                    break;
                 }
+                break;
 
             case 2:
-                for (Spell i : wizard.getKnownSpells()){
+                for (Object i : cloneKnownSpells){
                     if (!i.equals("accio")) {
                         learnAccio(wizard.getKnownSpells());
                     }
-                    break;
                 }
+                break;
+
             case 3:
-                for (Spell i : wizard.getKnownSpells()){
+                for (Object i : cloneKnownSpells){
                     if (!i.equals("expectoPatronum")) {
                         learnExpectoPatronum(wizard.getKnownSpells());
                     }
-                    break;
                 }
+                break;
         }
+        Wizard.menu(wizard, 0);
     }
 
     public static Spell chooseSpell(Wizard wizard){
@@ -60,13 +62,12 @@ public class Spell extends AbstractSpell{
 
         if (PRNG.nextInt(100) < Acc){
             int wizardAttackPower = wizard.getAttackPower();
-            int realDamage = wizardAttackPower - (wizardAttackPower * 40/100);
+            int realDamage = wizardAttackPower - (wizardAttackPower * dividedDamage/100);
             enemy.setCurrentHealth(enemy.getCurrentHealth()- realDamage);
 
         }else{
             System.out.println("You missed !");
         }
-
     }
     public static void learnBasicSpell(List<Spell> knownSpells){
         System.out.println("In this class you will learn your first spell. The basic spell.");

@@ -11,7 +11,7 @@ public class Main {
         //introduction();
         Wizard wizard = createWizard();
         Spell.learnBasicSpell(wizard.getKnownSpells());
-        menu(wizard,0);
+        Wizard.menu(wizard,0);
 
     }
 
@@ -41,27 +41,6 @@ public class Main {
         return wizard;
     }
 
-    private static void menu(Wizard wizard,int numberChapter){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter");
-        int numberChoice = scanner.nextInt();
-        switch(numberChoice){
-            case 1:
-                learnSpell(wizard);
-                break;
-            case 2:
-                simpleFight(wizard,numberChapter);
-                break;
-            case 3:
-                nextChapter();
-                break;
-        }
-    }
 
 
-
-
-    private static void nextChapter(){
-
-    }
 }
