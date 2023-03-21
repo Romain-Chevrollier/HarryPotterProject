@@ -1,10 +1,54 @@
 package Composants;
+import lombok.Setter;
+import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Potion {
-    int numberHealth;
+    @Getter @Setter String name;
+    @Getter @Setter int numberHealth;
+    @Getter @Setter int numberOfPotion;
 
-    void createPotion(){
+    public static void createPotion(Wizard wizard){
+        Potion smallPotion = new Potion();
+        smallPotion.setNumberHealth(10);
+        smallPotion.setNumberOfPotion(0);
+        smallPotion.setName("Small Potion");
 
+        Potion mediumPotion = new Potion();
+        mediumPotion.setNumberHealth(25);
+        mediumPotion.setNumberOfPotion(0);
+        mediumPotion.setName("Medium Potion");
+
+        Potion largePotion = new Potion();
+        largePotion.setNumberHealth(50);
+        largePotion.setNumberOfPotion(0);
+        largePotion.setName("Large Potion");
+
+        wizard.getPotions().add(smallPotion);
+        wizard.getPotions().add(mediumPotion);
+        wizard.getPotions().add(largePotion);
+    }
+
+    public static void dropPotion(Wizard wizard){
+        Random PRNG = new Random();
+        int randomDrop = PRNG.nextInt(100);
+        List<Potion> listPotion = wizard.getPotions();
+        System.out.print(randomDrop);
+        if (randomDrop/100 <= 0.02){
+            System.out.println("you dropped a large potion");
+            listPotion.get(2).setNumberOfPotion(listPotion.get(2).getNumberOfPotion() + 1);
+            System.out.println("You now have " + listPotion.get(2).getNumberOfPotion() + " large potion");
+        }else if(randomDrop/100 <= 0.10){
+            System.out.println("you dropped a medium potion");
+            listPotion.get(1).setNumberOfPotion(listPotion.get(1).getNumberOfPotion() + 1);
+            System.out.println("You now have " + listPotion.get(1).getNumberOfPotion() + " medium potion");
+        }else if(randomDrop/100 <= 0.20){
+            System.out.println("you dropped a small potion");
+            listPotion.get(0).setNumberOfPotion(listPotion.get(0).getNumberOfPotion() + 1);
+            System.out.println("You now have " + listPotion.get(0).getNumberOfPotion() + " small potion");
+        }
     }
 }

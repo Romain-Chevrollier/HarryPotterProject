@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
-public class Spell extends AbstractSpell{
+
+public class Spell extends AbstractSpell {
 
     //static List<Spell> spellList = new ArrayList<Spell>();
 
 
-    public static void learnSpell(Wizard wizard){
+    public static void learnSpell(Wizard wizard) {
         int wizardLevel = wizard.getLevel();
         ArrayList cloneKnownSpells = new ArrayList(wizard.getKnownSpells());
-        switch(wizardLevel){
+        switch (wizardLevel) {
             case 1:
-                for (Object i : cloneKnownSpells){
+                for (Object i : cloneKnownSpells) {
                     if (!i.equals("wingardiumLeviosa")) {
                         learnWingardiumLeviosa(wizard.getKnownSpells());
                     }
@@ -22,7 +23,7 @@ public class Spell extends AbstractSpell{
                 break;
 
             case 2:
-                for (Object i : cloneKnownSpells){
+                for (Object i : cloneKnownSpells) {
                     if (!i.equals("accio")) {
                         learnAccio(wizard.getKnownSpells());
                     }
@@ -30,7 +31,7 @@ public class Spell extends AbstractSpell{
                 break;
 
             case 3:
-                for (Object i : cloneKnownSpells){
+                for (Object i : cloneKnownSpells) {
                     if (!i.equals("expectoPatronum")) {
                         learnExpectoPatronum(wizard.getKnownSpells());
                     }
@@ -40,7 +41,7 @@ public class Spell extends AbstractSpell{
         Wizard.menu(wizard, 0);
     }
 
-    public static Spell chooseSpell(Wizard wizard){
+    public static Spell chooseSpell(Wizard wizard) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What spell do you want to use ?");
         List<Spell> knownSpells = wizard.getKnownSpells();
@@ -55,21 +56,23 @@ public class Spell extends AbstractSpell{
         return choosedSpell;
     }
 
-    public static void useSpell(Spell choosedSpell, Enemy enemy, Wizard wizard){
+    public static void useSpell(Spell choosedSpell, Enemy enemy, Wizard wizard) {
         Random PRNG = new Random();
         int Acc = choosedSpell.getAccuracy();
         int dividedDamage = choosedSpell.getDividedDamage();
 
-        if (PRNG.nextInt(100) < Acc){
+        if (PRNG.nextInt(100) < Acc) {
             int wizardAttackPower = wizard.getAttackPower();
-            int realDamage = wizardAttackPower - (wizardAttackPower * dividedDamage/100);
-            enemy.setCurrentHealth(enemy.getCurrentHealth()- realDamage);
-
-        }else{
+            int realDamage = wizardAttackPower - (wizardAttackPower * dividedDamage / 100);
+            enemy.setCurrentHealth(enemy.getCurrentHealth() - realDamage);
+            System.out.println("You choosed the spell " + choosedSpell.getName());
+            System.out.println("You dealt " + realDamage + " damage to the " + enemy.getName());
+        } else {
             System.out.println("You missed !");
         }
     }
-    public static void learnBasicSpell(List<Spell> knownSpells){
+
+    public static void learnBasicSpell(List<Spell> knownSpells) {
         System.out.println("In this class you will learn your first spell. The basic spell.");
         System.out.println("What does the spell do ?");
 
@@ -82,7 +85,7 @@ public class Spell extends AbstractSpell{
         knownSpells.add(basicSpell);
     }
 
-    private static void learnWingardiumLeviosa(List<Spell> knownSpells){
+    private static void learnWingardiumLeviosa(List<Spell> knownSpells) {
         System.out.print("In this class you will learn Wingardium Leviosa.");
         System.out.print("What does the spell do ?");
 
@@ -95,7 +98,7 @@ public class Spell extends AbstractSpell{
         knownSpells.add(wingardiumLeviosa);
     }
 
-    private static void learnAccio(List<Spell> knownSpells){
+    private static void learnAccio(List<Spell> knownSpells) {
         System.out.print("In this class you will learn Accio.");
         System.out.print("What does the spell do ?");
 
@@ -108,7 +111,7 @@ public class Spell extends AbstractSpell{
         knownSpells.add(accio);
     }
 
-    private static void learnExpectoPatronum(List<Spell> knownSpells){
+    private static void learnExpectoPatronum(List<Spell> knownSpells) {
         System.out.print("In this class you will learn Expecto Patronum.");
         System.out.print("What does the spell do ?");
 

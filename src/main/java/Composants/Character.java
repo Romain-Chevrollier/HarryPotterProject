@@ -1,5 +1,6 @@
 package Composants;
 import lombok.*;
+@ToString
 public abstract class Character {
     @Getter @Setter String name;
     @Getter @Setter int maxHealth;

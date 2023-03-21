@@ -8,11 +8,10 @@ import static Composants.Spell.learnSpell;
 
 public class Main {
     public static void main(String[] args){
-        //introduction();
+        introduction();
         Wizard wizard = createWizard();
         Spell.learnBasicSpell(wizard.getKnownSpells());
         Wizard.menu(wizard,0);
-
     }
 
 
@@ -38,9 +37,9 @@ public class Main {
         wizard.setLevel(1);
         wizard.setAttackPower(12);
         wizard.setKnownSpells(new ArrayList<>());
+        wizard.setPotions(new ArrayList<>());
+        Potion.createPotion(wizard);
         return wizard;
     }
-
-
 
 }

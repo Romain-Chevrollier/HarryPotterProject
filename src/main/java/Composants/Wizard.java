@@ -2,40 +2,58 @@ package Composants;
 
 import java.util.List;
 import java.util.Scanner;
+
 import lombok.Setter;
 import lombok.Getter;
+import lombok.ToString;
 
 import static Composants.Enemy.simpleFight;
 import static Composants.Spell.learnSpell;
 
-public class Wizard extends Character{
-    @Getter @Setter static Pet pet;
-    @Getter @Setter static Wand wand;
-    @Getter @Setter static House house;
-    @Getter @Setter int level;
-    @Getter @Setter int xp;
-    @Getter @Setter List<Potion> potions;
-    @Getter @Setter List<Spell> knownSpells;
+@ToString
+public class Wizard extends Character {
+    @Getter
+    @Setter
+    Pet pet;
+    @Getter
+    @Setter
+    Wand wand;
+    @Getter
+    @Setter
+    House house;
+    @Getter
+    @Setter
+    int level;
+    @Getter
+    @Setter
+    int xp;
+    @Getter
+    @Setter
+    List<Potion> potions;
+    @Getter
+    @Setter
+    List<Spell> knownSpells;
 
 
-    void defend(){
+    void defend() {
 
     }
 
-    public static boolean wizardTurn(Wizard wizard, Enemy enemy){
+    public static boolean wizardTurn(Wizard wizard, Enemy enemy) {
         boolean stateOfFight = Enemy.endFight(wizard, enemy);
-        if (!stateOfFight){
-            menuWizardFight(wizard,enemy);
-            System.out.println("The enemy has " + enemy.getCurrentHealth() + " health point");
+        if (!stateOfFight) {
+            menuWizardFight(wizard, enemy);
+            showHealth(wizard, enemy);
+            //System.out.println("The enemy has " + enemy.getCurrentHealth() + " health point");
         }
         return stateOfFight;
     }
 
-    private static void menuWizardFight(Wizard wizard,Enemy enemy){
+    private static void menuWizardFight(Wizard wizard, Enemy enemy) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What do you want to do ? \n 1.Attack \n 2.Inventory");
+        System.out.println("It's your turn. \nWhat do you want to do ? \n 1.Attack \n 2.Inventory");
         int numberChoice = scanner.nextInt();
-        switch(numberChoice){
+        switch (numberChoice) {
             case 1:
                 Spell choosedSpell = Spell.chooseSpell(wizard);
                 Spell.useSpell(choosedSpell, enemy, wizard);
@@ -45,15 +63,15 @@ public class Wizard extends Character{
         }
     }
 
-    public static void manageXp(Wizard wizard, Enemy enemy){
+    public static void manageXp(Wizard wizard, Enemy enemy) {
         int wizardXp = wizard.getXp();
         int enemyDropXp = enemy.getDropXp();
         int xpNeeded = wizard.getLevel() * 100;
-        if (wizardXp < xpNeeded){
-            if (enemyDropXp > xpNeeded - wizardXp){
+        if (wizardXp < xpNeeded) {
+            if (enemyDropXp > xpNeeded - wizardXp) {
                 wizard.setXp(xpNeeded - wizardXp + enemyDropXp);
                 wizardLevelUp(wizard);
-            }else{
+            } else {
                 wizard.setXp(wizardXp + enemyDropXp);
             }
 
@@ -62,29 +80,38 @@ public class Wizard extends Character{
         System.out.println("You need " + (xpNeeded - wizard.getXp()) + " point of experience to level up");
     }
 
-    private static void wizardLevelUp(Wizard wizard){
+    private static void wizardLevelUp(Wizard wizard) {
         wizard.setMaxHealth(wizard.getMaxHealth() + 10);
         wizard.setAttackPower(wizard.getAttackPower() + 3);
     }
 
-    public static void menu(Wizard wizard,int numberChapter){
+    public static void menu(Wizard wizard, int numberChapter) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter");
-        int numberChoice = scanner.nextInt();
-        switch(numberChoice){
-            case 1:
+        String numberChoice = scanner.nextLine();
+        switch (numberChoice) {
+            case "1":
                 learnSpell(wizard);
                 break;
-            case 2:
-                simpleFight(wizard,numberChapter);
+            case "2":
+                simpleFight(wizard, numberChapter);
                 break;
-            case 3:
+            case "3":
                 nextChapter();
                 break;
         }
     }
 
-    private static void nextChapter(){
+    private static void nextChapter() {
 
     }
+
+    public static void showHealth(Wizard wizard, Enemy enemy) {
+
+        System.out.println(String.format("+" + "-".repeat(31) + "+"));
+        System.out.println(String.format("|%-5s %-10s %-8s %-5s|","", wizard.getName(),enemy.getName(),""));
+        System.out.println(String.format("|%-5s %-10s %-8s %-5s|","", wizard.getCurrentHealth() + "/" + wizard.getMaxHealth() ,enemy.getCurrentHealth() + "/" + enemy.getMaxHealth(),""));
+        System.out.println(String.format("+" + "-".repeat(31) + "+"));
+    }
+
 }

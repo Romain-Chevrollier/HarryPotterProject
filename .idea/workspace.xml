@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Small fight working (you can die and win but not get reward yet)">
+    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="You can now earn xp and level. Your stat will go up with a level up. you can learn Spell if you have the right level.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
@@ -150,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678890483796</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="You can now earn xp and level. Your stat will go up with a level up. you can learn Spell if you have the right level.">
+      <created>1679052062820</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679052062820</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +180,7 @@
     <MESSAGE value="new commit" />
     <MESSAGE value="chooseSpell()" />
     <MESSAGE value="Small fight working (you can die and win but not get reward yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fight working (you can die and win but not get reward yet)" />
+    <MESSAGE value="You can now earn xp and level. Your stat will go up with a level up. you can learn Spell if you have the right level." />
+    <option name="LAST_COMMIT_MESSAGE" value="You can now earn xp and level. Your stat will go up with a level up. you can learn Spell if you have the right level." />
   </component>
 </project>
