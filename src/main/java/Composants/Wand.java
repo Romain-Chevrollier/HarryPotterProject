@@ -1,9 +1,10 @@
 package Composants;
 
 
-import java.sql.SQLOutput;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Scanner;
-import lombok.*;
 
 public class Wand {
     @Setter @Getter static Core core;
