@@ -1,0 +1,19 @@
+Index: src/main/java/Composants/Wand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Composants;\r\n\r\n\r\nimport java.util.Scanner;\r\nimport lombok.*;\r\n@Getter @Setter\r\npublic class Wand {\r\n    Core core;\r\n    static int size;\r\n    \r\n    public static void chooseWand(){\r\n\r\n    }\r\n\r\n    public static void chooseCore(){\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.print(\"Enter the core of your wand :\");\r\n        System.out.println(java.util.Arrays.asList(Core.values()));\r\n        int numberCore = scanner.nextInt();\r\n        \r\n    }\r\n\r\n    public static void chooseSize(){\r\n\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.print(\"Enter the size of your wand :\");\r\n        Wand.size = scanner.nextInt();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Composants/Wand.java b/src/main/java/Composants/Wand.java
+--- a/src/main/java/Composants/Wand.java	(revision 402e905ab6b13ab120dcbc9ca96d2df85f2b88aa)
++++ b/src/main/java/Composants/Wand.java	(date 1678433387560)
+@@ -17,7 +17,7 @@
+         System.out.print("Enter the core of your wand :");
+         System.out.println(java.util.Arrays.asList(Core.values()));
+         int numberCore = scanner.nextInt();
+-        
++
+     }
+ 
+     public static void chooseSize(){
