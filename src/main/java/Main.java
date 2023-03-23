@@ -2,13 +2,12 @@ import Composants.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import Composants.Spell.*;
 public class Main {
-    public void main(String[] args){
+    public static void main(String[] args){
         introduction();
         Wizard wizard = createWizard();
-        wizard.learnBasicSpell(wizard.getKnownSpells());
-        wizard.menu(0);
+        Spell.learnBasicSpell(wizard.getKnownSpells());
+        wizard.menu(wizard.getNumberChapter());
     }
 
 
@@ -16,14 +15,14 @@ public class Main {
         System.out.println("Welcome to Hogwarts !");
     }
 
-    private String chooseName(){
+    private static String chooseName(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your wizard name :");
         String name = scanner.nextLine();
         return name;
     }
 
-    private Wizard createWizard(){
+    private static Wizard createWizard(){
         Wizard wizard = new Wizard();
         wizard.setName(chooseName());
         wizard.setPet(Pet.choosePet());
@@ -35,6 +34,7 @@ public class Main {
         wizard.setAttackPower(12);
         wizard.setKnownSpells(new ArrayList<>());
         wizard.setPotions(new ArrayList<>());
+        wizard.setNumberChapter(0);
         Potion.createPotion(wizard);
         return wizard;
     }
