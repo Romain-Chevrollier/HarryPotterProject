@@ -38,7 +38,7 @@ public class Spell extends AbstractSpell {
                 }
                 break;
         }
-        Wizard.menu(wizard, 0);
+        this.menu(0);
     }
 
     public Spell chooseSpell() {

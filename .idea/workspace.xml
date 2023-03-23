@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Display of the Hp of wizard and enemy">
+    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Put down static for some function, you can now choose and use Potion from your inventory.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/nameEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/nameEnemy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679392492928</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Put down static for some function, you can now choose and use Potion from your inventory.">
+      <created>1679493970028</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1679493970029</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +198,7 @@
     <MESSAGE value="Small fight working (you can die and win but not get reward yet)" />
     <MESSAGE value="You can now earn xp and level. Your stat will go up with a level up. you can learn Spell if you have the right level." />
     <MESSAGE value="Display of the Hp of wizard and enemy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Display of the Hp of wizard and enemy" />
+    <MESSAGE value="Put down static for some function, you can now choose and use Potion from your inventory." />
+    <option name="LAST_COMMIT_MESSAGE" value="Put down static for some function, you can now choose and use Potion from your inventory." />
   </component>
 </project>
