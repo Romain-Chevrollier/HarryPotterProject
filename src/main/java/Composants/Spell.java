@@ -16,8 +16,23 @@ public class Spell extends AbstractSpell {
         basicSpell.setDescription("Shoot a small ball of concentrated magic.");
         basicSpell.setAccuracy(100);
         basicSpell.setDividedDamage(50);
-
         knownSpells.add(basicSpell);
+    }
+
+    public static void learnExitSpell(List<Spell> knownSpells){
+        Spell exitSpell = new Spell();
+        exitSpell.setName("Exit Spell");
+
+        knownSpells.add(exitSpell);
+    }
+
+    public static void learnSwordOfGryffondor(List<Spell> knownSpells){
+        Spell swordOfGryffondor = new Spell();
+        swordOfGryffondor.setName("Sword of Gryffondor");
+        swordOfGryffondor.setAccuracy(100);
+        swordOfGryffondor.setDividedDamage(0);
+
+        knownSpells.add(swordOfGryffondor);
     }
 
     public static void learnWingardiumLeviosa(List<Spell> knownSpells) {

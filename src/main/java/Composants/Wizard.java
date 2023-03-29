@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -36,10 +37,6 @@ public class Wizard extends Character {
     List<Spell> knownSpells;
 
 
-    void defend() {
-
-    }
-
     public boolean wizardTurn(AbstractEnemy enemyOrBoss) {
         boolean stateOfFight = this.endFight(enemyOrBoss);
         if (!stateOfFight) {
@@ -49,20 +46,29 @@ public class Wizard extends Character {
         }
         return stateOfFight;
     }
-//TODO Faire un moyen de sortir de l'inventaire et de l'attaque mais sans perdre son tour !
+
     private void menuWizardFight(AbstractEnemy enemyOrBoss) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("It's your turn. \nWhat do you want to do ? \n 1.Attack \n 2.Inventory");
-        int numberChoice = scanner.nextInt();
-        switch (numberChoice) {
-            case 1:
-                Spell choosedSpell = this.chooseSpell();
-                this.useSpell(choosedSpell, enemyOrBoss);
-                break;
-            case 2:
-                Potion choosedPotion = this.choosePotion(enemyOrBoss);
-                this.usePotion(choosedPotion);
-                break;
+        boolean testUseTurn = true;
+        while (testUseTurn) {
+            System.out.println("It's your turn. \nWhat do you want to do ? \n 1.Attack \n 2.Inventory");
+            String numberChoice = scanner.nextLine();
+            switch (numberChoice) {
+                case "1" -> {
+                    Spell choosedSpell = this.chooseSpell(enemyOrBoss);
+                    if (!(Objects.equals(choosedSpell.getName(), "Exit Spell"))) {
+                        this.useSpell(choosedSpell, enemyOrBoss);
+                        testUseTurn = false;
+                    }
+                }
+                case "2" -> {
+                    Potion choosedPotion = this.choosePotion(enemyOrBoss);
+                    if (!(Objects.equals(choosedPotion.getName(), "Exit Inventory"))) {
+                        this.usePotion(choosedPotion);
+                        testUseTurn = false;
+                    }
+                }
+            }
         }
     }
 
@@ -70,21 +76,27 @@ public class Wizard extends Character {
         int wizardXp = this.getXp();
         int xpNeeded = this.getLevel() * 100;
         if (wizardXp < xpNeeded) {
-            if (dropXp > xpNeeded - wizardXp) {
+            if (dropXp >= xpNeeded - wizardXp) {
                 this.setXp(xpNeeded - wizardXp + dropXp);
-                this.wizardLevelUp();
+                System.out.println("You dropped " + dropXp + " point of experience");
+                xpNeeded = this.wizardLevelUp(xpNeeded, wizardXp, dropXp);
+                System.out.println("You need " + (xpNeeded - this.getXp()) + " point of experience to level up");
             } else {
                 this.setXp(wizardXp + dropXp);
+                System.out.println("You dropped " + dropXp + " point of experience");
+                System.out.println("You need " + (xpNeeded - this.getXp()) + " point of experience to level up");
             }
-
         }
-        System.out.println("You dropped " + dropXp + " point of experience");
-        System.out.println("You need " + (xpNeeded - this.getXp()) + " point of experience to level up");
     }
 
-    private void wizardLevelUp() {
+    private int wizardLevelUp(int xpNeeded, int wizardXp, int dropXp) {
+        this.setLevel(this.getLevel() + 1);
+        System.out.println("You gain a level. You are now level : " + this.getLevel());
+        System.out.println("You gain 10 health and 3 attack power");
         this.setMaxHealth(this.getMaxHealth() + 10);
         this.setAttackPower(this.getAttackPower() + 3);
+        this.setXp(dropXp - xpNeeded - wizardXp);
+        return xpNeeded+100;
     }
 
     public void menu(int numberChapter) {
@@ -92,20 +104,16 @@ public class Wizard extends Character {
         System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter");
         String numberChoice = scanner.nextLine();
         switch (numberChoice) {
-            case "1":
-                this.learnSpell();
-                break;
-            case "2":
+            case "1" -> this.learnSpell();
+            case "2" -> {
                 Enemy enemy = Enemy.createEnemy(numberChapter);
-                this.simpleFight(this.getNumberChapter(), enemy);
-                break;
-            case "3":
-                this.nextChapter();
-                break;
+                this.simpleFight(enemy);
+            }
+            case "3" -> this.nextChapter();
         }
     }
 
-    public void simpleFight(int numberChapter, AbstractEnemy enemyOrBoss) {
+    public void simpleFight(AbstractEnemy enemyOrBoss) {
         this.setCurrentHealth(this.getMaxHealth());
         enemyOrBoss.setCurrentHealth(enemyOrBoss.getMaxHealth());
         this.showHealth(enemyOrBoss);
@@ -115,7 +123,6 @@ public class Wizard extends Character {
             enemyOrBoss.enemyTurn(this);
         }
         this.menu(this.getNumberChapter());
-
     }
 
     public boolean endFight(AbstractEnemy enemyOrBoss) {
@@ -123,6 +130,9 @@ public class Wizard extends Character {
             System.out.println("You died");
             return true;
         } else if (enemyOrBoss.getCurrentHealth() <= 0) {
+            if(Objects.equals(enemyOrBoss.getName(), "Troll")){
+                this.setNumberChapter(this.getNumberChapter()+1);
+            }
             System.out.println("You won the battle");
             this.manageXp(enemyOrBoss.getDropXp());
             this.dropPotion();
@@ -133,31 +143,38 @@ public class Wizard extends Character {
 
     private void nextChapter() {
         switch (this.getNumberChapter()) {
-            case 0:
-                this.chapterNumberOne();
-                break;
+            case 0 -> this.chapterNumberOne();
+            case 1 -> this.chapterNumberTwo();
         }
-
     }
 
     private void chapterNumberOne() {
+        Boss troll = Boss.createTroll();
+        this.simpleFight(troll);
+    }
+
+    private void chapterNumberTwo(){
         Boss basilic = Boss.createBasilic();
-        simpleFight(this.getNumberChapter(), basilic);
+        this.simpleFight(basilic);
     }
 
     public void showHealth(AbstractEnemy enemyOrBoss) {
-        System.out.println(String.format("+" + "-".repeat(31) + "+"));
-        System.out.println(String.format("|%-5s %-10s %-8s %-5s|", "", this.getName(), enemyOrBoss.getName(), ""));
-        System.out.println(String.format("|%-5s %-10s %-8s %-5s|", "", this.getCurrentHealth() + "/" + this.getMaxHealth(), enemyOrBoss.getCurrentHealth() + "/" + enemyOrBoss.getMaxHealth(), ""));
-        System.out.println(String.format("+" + "-".repeat(31) + "+"));
+        System.out.println("+" + "-".repeat(31) + "+");
+        System.out.printf("|%-5s %-10s %-8s %-5s|%n", "", this.getName(), enemyOrBoss.getName(), "");
+        System.out.printf("|%-5s %-10s %-8s %-5s|%n", "", this.getCurrentHealth() + "/" + this.getMaxHealth(), enemyOrBoss.getCurrentHealth() + "/" + enemyOrBoss.getMaxHealth(), "");
+        System.out.println("+" + "-".repeat(31) + "+");
     }
 
 
     // ==================================================Function about Spell===============================================
-    public Spell chooseSpell() {
+    public Spell chooseSpell(AbstractEnemy enemyOrBoss){
         Scanner scanner = new Scanner(System.in);
         System.out.println("What spell do you want to use ?");
         List<Spell> knownSpells = this.getKnownSpells();
+        if (this.getHouse() == House.Gryffondor && enemyOrBoss.getName() == "Basilic" && enemyOrBoss.getCurrentHealth() <= enemyOrBoss.getMaxHealth()/2){
+            Spell.learnSwordOfGryffondor(knownSpells);
+            System.out.println("testetstetetsttetstt");
+        }
         int count = 1;
         for (Spell i : knownSpells) {
             System.out.print(count + ".");
@@ -165,8 +182,7 @@ public class Wizard extends Character {
             count += 1;
         }
         int numberSpell = scanner.nextInt();
-        Spell choosedSpell = knownSpells.get(numberSpell - 1);
-        return choosedSpell;
+        return knownSpells.get(numberSpell - 1);
     }
 
 
@@ -176,18 +192,32 @@ public class Wizard extends Character {
         int dividedDamage = choosedSpell.getDividedDamage();
 
         if (PRNG.nextInt(100) < Acc) {
+
             int wizardAttackPower = this.getAttackPower();
             int realDamage = wizardAttackPower - (wizardAttackPower * dividedDamage / 100);
-            if (enemyOrBoss.getName() == "Basilic" && choosedSpell.getName() == "Wingardium Leviosa"){
-                realDamage *= 2;
-                System.out.println("test");
+            realDamage = damageBoostWingardiumOnTroll(realDamage, choosedSpell);
+            if (choosedSpell.getName() == "Sword of Gryffondor"){
+                realDamage = 999;
             }
-            enemyOrBoss.setCurrentHealth(enemyOrBoss.getCurrentHealth() - realDamage);
+            int hpOfEnemyAfterDamage = enemyOrBoss.getCurrentHealth() - realDamage;
+            if (hpOfEnemyAfterDamage < 0){
+                enemyOrBoss.setCurrentHealth(0);
+            }else{
+                enemyOrBoss.setCurrentHealth(enemyOrBoss.getCurrentHealth() - realDamage);
+            }
+
             System.out.println("You choosed the spell " + choosedSpell.getName());
             System.out.println("You dealt " + realDamage + " damage to the " + enemyOrBoss.getName());
+
         } else {
             System.out.println("You missed !");
         }
+    }
+    public int damageBoostWingardiumOnTroll(int realDamage, Spell choosedSpell){
+        if (this.getName() == "Troll" && choosedSpell.getName() == "Wingardium Leviosa") {
+            realDamage *= 2;
+        }
+        return realDamage;
     }
 
 
@@ -196,7 +226,7 @@ public class Wizard extends Character {
         List<Spell> knownSpells = this.getKnownSpells();
         boolean test = false;
         switch (wizardLevel) {
-            case 1:
+            case 1 -> {
                 for (Spell i : knownSpells) {
                     if (i.getName().equals("Wingardium Leviosa")) {
                         test = true;
@@ -207,9 +237,8 @@ public class Wizard extends Character {
                 } else {
                     System.out.println("You already know all the spell available for your level.\n If you want more spell you can do Simple Fight or Challenge the next chapter to level up.");
                 }
-                break;
-
-            case 2:
+            }
+            case 2 -> {
                 for (Spell i : knownSpells) {
                     if (i.getName().equals("Accio")) {
                         test = true;
@@ -220,9 +249,8 @@ public class Wizard extends Character {
                 } else {
                     System.out.println("You already know all the spell available for your level.\n If you want more spell you can do Simple Fight or Challenge the next chapter to level up.");
                 }
-                break;
-
-            case 3:
+            }
+            case 3 -> {
                 for (Spell i : knownSpells) {
                     if (i.getName().equals("Expecto Patronum")) {
                         test = true;
@@ -233,7 +261,7 @@ public class Wizard extends Character {
                 } else {
                     System.out.println("You already know all the spell available for your level.\n If you want more spell you can do Simple Fight or Challenge the next chapter to level up.");
                 }
-                break;
+            }
         }
         this.menu(this.getNumberChapter());
     }
@@ -252,30 +280,23 @@ public class Wizard extends Character {
             System.out.println(" " + i.getName());
             count += 1;
         }
-        System.out.print(count + ".");
-        System.out.println("Exit the inventory");
         System.out.println("Choose what you want to use");
         boolean testToGoOutOfWhile = false;
         Potion thePotionInTheList;
-        do{
+        do {
             String choosedPotion = scanner.nextLine();
-            if (Integer.parseInt(choosedPotion) == count ){
-                System.out.println("You go out of your inventory");
-                menuWizardFight(enemyOrBoss);
-            }
             thePotionInTheList = listOfPotions.get(Integer.parseInt(choosedPotion) - 1);
-            if (thePotionInTheList.getNumberOfPotion() == 0){
+            if (thePotionInTheList.getNumberOfPotion() == 0) {
                 System.out.println("You don't have any " + thePotionInTheList.getName() + " in your inventory");
                 System.out.println("Please choose another one or close your inventory.");
-            }else{
+            } else {
                 testToGoOutOfWhile = true;
             }
-        }while(!testToGoOutOfWhile);
+        } while (!testToGoOutOfWhile);
 
         return thePotionInTheList;
 
     }
-
 
     public void usePotion(Potion choosedPotion) {
         int wizardCurrentHealth = this.getCurrentHealth();

@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args){
         introduction();
         Wizard wizard = createWizard();
+        Spell.learnExitSpell(wizard.getKnownSpells());
         Spell.learnBasicSpell(wizard.getKnownSpells());
         wizard.menu(wizard.getNumberChapter());
     }

@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Put down static for some function, you can now choose and use Potion from your inventory.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_03_2023_08_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_03_2023_08_37__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/SortingHat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/SortingHat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Composants/AbstractEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/AbstractEnemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Composants/Wand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/Wand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Composants/nameEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/nameEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Composants/SortingHat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/SortingHat.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +32,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/test" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
