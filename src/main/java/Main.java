@@ -35,7 +35,7 @@ public class Main {
         wizard.setAttackPower(12);
         wizard.setKnownSpells(new ArrayList<>());
         wizard.setPotions(new ArrayList<>());
-        wizard.setNumberChapter(0);
+        wizard.setNumberChapter(1);
         Potion.createPotion(wizard);
         return wizard;
     }

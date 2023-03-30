@@ -101,7 +101,7 @@ public class Wizard extends Character {
 
     public void menu(int numberChapter) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter");
+        System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter" + "\nYou're at the chapter number " + this.getNumberChapter() + "/7");
         String numberChoice = scanner.nextLine();
         switch (numberChoice) {
             case "1" -> this.learnSpell();
@@ -136,6 +136,9 @@ public class Wizard extends Character {
             System.out.println("You won the battle");
             this.manageXp(enemyOrBoss.getDropXp());
             this.dropPotion();
+            if (enemyOrBoss.getName() == "Basilic"){
+                this.testAccioChapterTwo(enemyOrBoss);
+            }
             return true;
         }
         return false;
@@ -157,7 +160,31 @@ public class Wizard extends Character {
         Boss basilic = Boss.createBasilic();
         this.simpleFight(basilic);
     }
+    private void testAccioChapterTwo(AbstractEnemy Boss){
+        System.out.println("You have defeated the basilic you now need to destroy the book of Tom Jedusor");
+        List<Spell> listOfSpell = this.getKnownSpells();
+        boolean test = false;
+        for (Spell i : listOfSpell){
+            if (Objects.equals(i.getName(), "Accio")) {
+                test = true;
+                break;
+            }
+        }
+        if (test){
+            Spell spell;
+            do{
+                System.out.println("Use Accio to get a fang from the dead basilic.");
+                spell = this.chooseSpell(Boss);
+                if (spell.getName() == "Accio"){
+                    System.out.println("You suscecfully obtained a fang of the basilic and destroyed the book.");
+                    this.setNumberChapter(this.getNumberChapter()+1);
+                }
+            }while (spell.getName() != "Accio");
+        }else{
+            System.out.println("You didn't learn Accio yet. \n Tom Jedusor has killed you.");
+        }
 
+    }
     public void showHealth(AbstractEnemy enemyOrBoss) {
         System.out.println("+" + "-".repeat(31) + "+");
         System.out.printf("|%-5s %-10s %-8s %-5s|%n", "", this.getName(), enemyOrBoss.getName(), "");
@@ -172,8 +199,16 @@ public class Wizard extends Character {
         System.out.println("What spell do you want to use ?");
         List<Spell> knownSpells = this.getKnownSpells();
         if (this.getHouse() == House.Gryffondor && enemyOrBoss.getName() == "Basilic" && enemyOrBoss.getCurrentHealth() <= enemyOrBoss.getMaxHealth()/2){
-            Spell.learnSwordOfGryffondor(knownSpells);
-            System.out.println("testetstetetsttetstt");
+            boolean test = false;
+            for(Spell i : knownSpells){
+                if (Objects.equals(i.getName(), "Sword of Gryffondor")) {
+                    test = true;
+                    break;
+                }
+            }
+            if (!test) {
+                Spell.learnSwordOfGryffondor(knownSpells);
+            }
         }
         int count = 1;
         for (Spell i : knownSpells) {
@@ -230,6 +265,7 @@ public class Wizard extends Character {
                 for (Spell i : knownSpells) {
                     if (i.getName().equals("Wingardium Leviosa")) {
                         test = true;
+                        break;
                     }
                 }
                 if (!test) {
@@ -242,6 +278,7 @@ public class Wizard extends Character {
                 for (Spell i : knownSpells) {
                     if (i.getName().equals("Accio")) {
                         test = true;
+                        break;
                     }
                 }
                 if (!test) {
@@ -254,6 +291,7 @@ public class Wizard extends Character {
                 for (Spell i : knownSpells) {
                     if (i.getName().equals("Expecto Patronum")) {
                         test = true;
+                        break;
                     }
                 }
                 if (!test) {
