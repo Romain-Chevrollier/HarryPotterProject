@@ -26,6 +26,7 @@ public class Potion {
 
         Potion exitInventory = new Potion();
         exitInventory.setNumberOfPotion(1);
+        exitInventory.setNumberHealth(0);
         exitInventory.setName("Exit Inventory");
 
         wizard.getPotions().add(smallHealthPotion);

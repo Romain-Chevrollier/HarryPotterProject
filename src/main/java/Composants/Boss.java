@@ -30,13 +30,22 @@ public class Boss extends AbstractEnemy{
         return dementor;
     }
 
-    public static Boss createVoldemort(){
-        Boss voldemort = new Boss();
-        voldemort.setName("Voldemort");
-        voldemort.setMaxHealth(800);
-        voldemort.setAttackPower(50);
-        voldemort.setDropXp(300);
+    public static Boss createVoldemortAndPetterPettigrow(){
+        Boss voldemortAndPetterPettigrow = new Boss();
+        voldemortAndPetterPettigrow.setName("Voldemort and Petter Pettigrow");
+        voldemortAndPetterPettigrow.setMaxHealth(1500);
+        voldemortAndPetterPettigrow.setAttackPower(100);
+        //voldemort.setDropXp(300);
 
-        return voldemort;
+        return voldemortAndPetterPettigrow;
+    }
+
+    public static Boss createDoloresOmbrage(){
+        Boss doloresOmbrage = new Boss();
+        doloresOmbrage.setName("Dolores Ombrage");
+        doloresOmbrage.setMaxHealth(800);
+        doloresOmbrage.setAttackPower(100);
+
+        return doloresOmbrage;
     }
 }

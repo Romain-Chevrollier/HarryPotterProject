@@ -1,13 +1,17 @@
 import Composants.*;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+@ToString
 public class Main {
     public static void main(String[] args){
         introduction();
         Wizard wizard = createWizard();
         Spell.learnExitSpell(wizard.getKnownSpells());
         Spell.learnBasicSpell(wizard.getKnownSpells());
+        System.out.println("The goal is to beat the 7 chapter.\nYou can Learn new spell every time you level up.\nYou can fight with small enemies to drop potion xp to level up\nYou can also try and beat a new chapter.");
         wizard.menu(wizard.getNumberChapter());
     }
 
@@ -29,6 +33,7 @@ public class Main {
         wizard.setPet(Pet.choosePet());
         wizard.setWand(Wand.chooseWand());
         wizard.setHouse(SortingHat.chooseHouse());
+        System.out.println("You are in " + wizard.getHouse() + ".");
         wizard.setMaxHealth(50);
         wizard.setXp(0);
         wizard.setLevel(1);
@@ -37,7 +42,12 @@ public class Main {
         wizard.setPotions(new ArrayList<>());
         wizard.setNumberChapter(1);
         Potion.createPotion(wizard);
+        if (wizard.getHouse() == House.Slytherin){
+            wizard.setAttackPower(wizard.getAttackPower()+10);
+            System.out.println("Because you are in Slytherin you deal 10 bonus damage with your spell");
+        }
+
+
         return wizard;
     }
-
 }

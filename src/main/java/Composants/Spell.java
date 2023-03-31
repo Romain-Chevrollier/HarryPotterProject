@@ -8,8 +8,6 @@ public class Spell extends AbstractSpell {
 
 
     public static void learnBasicSpell(List<Spell> knownSpells) {
-        System.out.println("In this class you will learn your first spell. The basic spell.");
-        System.out.println("What does the spell do ?");
 
         Spell basicSpell = new Spell();
         basicSpell.setName("Basic Spell");
@@ -19,8 +17,15 @@ public class Spell extends AbstractSpell {
         knownSpells.add(basicSpell);
     }
 
+    public static void learnFireWorks(List<Spell> knownSpells){
+        Spell fireWorks = new Spell();
+        fireWorks.setName("Fireworks");
+
+        knownSpells.add(fireWorks);
+    }
     public static void learnExitSpell(List<Spell> knownSpells){
         Spell exitSpell = new Spell();
+        exitSpell.setDividedDamage(100);
         exitSpell.setName("Exit Spell");
 
         knownSpells.add(exitSpell);
@@ -37,7 +42,6 @@ public class Spell extends AbstractSpell {
 
     public static void learnWingardiumLeviosa(List<Spell> knownSpells) {
         System.out.print("In this class you will learn Wingardium Leviosa.");
-        System.out.print("What does the spell do ?");
 
         Spell wingardiumLeviosa = new Spell();
         wingardiumLeviosa.setName("Wingardium Leviosa");
@@ -50,7 +54,6 @@ public class Spell extends AbstractSpell {
 
     public static void learnAccio(List<Spell> knownSpells) {
         System.out.print("In this class you will learn Accio.");
-        System.out.print("What does the spell do ?");
 
         Spell accio = new Spell();
         accio.setName("Accio");
@@ -63,7 +66,6 @@ public class Spell extends AbstractSpell {
 
     public static void learnExpectoPatronum(List<Spell> knownSpells) {
         System.out.print("In this class you will learn Expecto Patronum.");
-        System.out.print("What does the spell do ?");
 
         Spell expectoPatronum = new Spell();
         expectoPatronum.setName("Expecto Patronum");

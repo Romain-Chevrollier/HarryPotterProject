@@ -7,7 +7,12 @@ public abstract class AbstractEnemy extends Character{
 
     public void enemyTurn(Wizard wizard) {
         if (wizard.getCurrentHealth() > 0 && this.getCurrentHealth() > 0) {
-            wizard.setCurrentHealth(wizard.getCurrentHealth() - this.getAttackPower());
+            int attackPowerEnemy = this.getAttackPower();
+            if(wizard.getHouse() == House.Gryffondor){
+                attackPowerEnemy -= 10;
+                System.out.println("Because you are in Gryffondor, you take 10 less damage.");
+            }
+            wizard.setCurrentHealth(wizard.getCurrentHealth() - attackPowerEnemy);
             System.out.println("It's the turn of the " + this.getName());
             System.out.println("He dealt " + this.getAttackPower() + " damage");
             wizard.showHealth(this);

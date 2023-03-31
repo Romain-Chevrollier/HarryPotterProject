@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Put down static for some function, you can now choose and use Potion from your inventory.">
+    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Xp now works, scale with level of the wizard. When you fight the basilic you can use the sword of gryffondor when basilic half HP to finish him up.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Potion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Composants/AbstractEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/AbstractEnemy.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
