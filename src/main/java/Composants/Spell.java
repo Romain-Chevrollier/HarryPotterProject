@@ -20,7 +20,8 @@ public class Spell extends AbstractSpell {
     public static void learnFireWorks(List<Spell> knownSpells){
         Spell fireWorks = new Spell();
         fireWorks.setName("Fireworks");
-
+        fireWorks.setAccuracy(100);
+        fireWorks.setDividedDamage(0);
         knownSpells.add(fireWorks);
     }
     public static void learnExitSpell(List<Spell> knownSpells){

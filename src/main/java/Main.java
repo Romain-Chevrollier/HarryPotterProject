@@ -46,8 +46,6 @@ public class Main {
             wizard.setAttackPower(wizard.getAttackPower()+10);
             System.out.println("Because you are in Slytherin you deal 10 bonus damage with your spell");
         }
-
-
         return wizard;
     }
 }

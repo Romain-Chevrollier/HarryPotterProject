@@ -50,9 +50,10 @@ public class Wizard extends Character {
     private void menuWizardFight(AbstractEnemy enemyOrBoss) {
         Scanner scanner = new Scanner(System.in);
         boolean testUseTurn = true;
-        while (testUseTurn) {
+        String numberChoice = "0";
+        while (testUseTurn && (Integer.parseInt(numberChoice)<1 && Integer.parseInt(numberChoice)>2)) {
             System.out.println("It's your turn. \nWhat do you want to do ? \n 1.Attack \n 2.Inventory");
-            String numberChoice = scanner.nextLine();
+            numberChoice = scanner.nextLine();
             switch (numberChoice) {
                 case "1" -> {
                     Spell choosedSpell = this.chooseSpell(enemyOrBoss);
@@ -102,17 +103,20 @@ public class Wizard extends Character {
 
     public void menu(int numberChapter) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter" + "\n 4.Help" + "\nYou're at the chapter number " + this.getNumberChapter() + "/7");
-        String numberChoice = scanner.nextLine();
-        switch (numberChoice) {
-            case "1" -> this.learnSpell();
-            case "2" -> {
-                Enemy enemy = Enemy.createEnemy(numberChapter);
-                this.simpleFight(enemy);
+        String numberChoice;
+        do {
+            System.out.println("You have the choice between : \n 1.Learning a new spell \n 2.Fight an enemy \n 3.Challenge the next chapter" + "\n 4.Help" + "\nYou're at the chapter number " + this.getNumberChapter() + "/7");
+            numberChoice = scanner.nextLine();
+            switch (numberChoice) {
+                case "1" -> this.learnSpell();
+                case "2" -> {
+                    Enemy enemy = Enemy.createEnemy(numberChapter);
+                    this.simpleFight(enemy);
+                }
+                case "3" -> this.nextChapter();
+                case "4" -> this.help();
             }
-            case "3" -> this.nextChapter();
-            case "4" -> this.help();
-        }
+        }while(1>Integer. parseInt(numberChoice) || Integer.parseInt(numberChoice)>4);
     }
     private void help(){
         int numberChapter = this.getNumberChapter();
@@ -145,7 +149,7 @@ public class Wizard extends Character {
             System.out.println("You died");
             return true;
         } else if (enemyOrBoss.getCurrentHealth() <= 0) {
-            if (Objects.equals(enemyOrBoss.getName(), "Troll") || Objects.equals(enemyOrBoss.getName(), "Dementor")) {
+            if (Objects.equals(enemyOrBoss.getName(), "Troll") || Objects.equals(enemyOrBoss.getName(), "Dementor") || Objects.equals(enemyOrBoss.getName(), "Dolores Ombrage")) {
                 this.setNumberChapter(this.getNumberChapter() + 1);
             }
             System.out.println("You won the battle");
@@ -166,6 +170,9 @@ public class Wizard extends Character {
             case 3 -> this.chapterNumberThree();
             case 4 -> this.chapterNumberFour();
             case 5 -> this.chapterNumberFive();
+            case 6 -> System.out.println("This chapter as yet to be released");
+            case 7 -> System.out.println("This chapter as yet to be released");
+
         }
     }
 
@@ -286,6 +293,20 @@ public class Wizard extends Character {
             this.setKnownSpells(knownSpells);
         }
     }
+    private void removeFireworks(List<Spell> knownSpells){
+        boolean test = false;
+        Spell tampon = knownSpells.get(0);
+        for (Spell i : knownSpells){
+            if (Objects.equals(i.getName(), "Fireworks")){
+                tampon = i;
+                test = true;
+            }
+        }
+        if (test){
+            knownSpells.remove(tampon);
+            this.setKnownSpells(knownSpells);
+        }
+    }
 
     public void useSpell(Spell choosedSpell, AbstractEnemy enemyOrBoss) {
         System.out.println("You choosed the spell " + choosedSpell.getName());
@@ -313,6 +334,9 @@ public class Wizard extends Character {
                 enemyOrBoss.setCurrentHealth(enemyOrBoss.getCurrentHealth() - realDamage);
             }
             System.out.println("You dealt " + realDamage + " damage to the " + enemyOrBoss.getName());
+            if (choosedSpell.getName() == "Fireworks"){
+                removeFireworks(this.getKnownSpells());
+            }
 
         } else {
             System.out.println("You missed your spell!");
