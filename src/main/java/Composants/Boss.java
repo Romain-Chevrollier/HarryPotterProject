@@ -1,6 +1,7 @@
 package Composants;
 
 public class Boss extends AbstractEnemy{
+
     public static Boss createTroll(){
         Boss troll = new Boss();
         troll.setName("Troll");

@@ -51,7 +51,7 @@ public class Wizard extends Character {
         Scanner scanner = new Scanner(System.in);
         boolean testUseTurn = true;
         String numberChoice = "0";
-        while (testUseTurn && (Integer.parseInt(numberChoice)<1 && Integer.parseInt(numberChoice)>2)) {
+        while (testUseTurn && (Integer.parseInt(numberChoice)<1 || Integer.parseInt(numberChoice)>2)) {
             System.out.println("It's your turn. \nWhat do you want to do ? \n 1.Attack \n 2.Inventory");
             numberChoice = scanner.nextLine();
             switch (numberChoice) {
@@ -61,13 +61,18 @@ public class Wizard extends Character {
                         this.testChapterFour(choosedSpell,enemyOrBoss);
                         this.useSpell(choosedSpell, enemyOrBoss);
                         testUseTurn = false;
+                    }else{
+                        numberChoice = "0";
                     }
+
                 }
                 case "2" -> {
                     Potion choosedPotion = this.choosePotion();
                     if (!(Objects.equals(choosedPotion.getName(), "Exit Inventory"))) {
                         this.usePotion(choosedPotion);
                         testUseTurn = false;
+                    }else{
+                        numberChoice = "0";
                     }
                 }
             }

@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Third chapter finished. Fourth chapter almost finshed.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_03_2023_08_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_03_2023_08_52__Changes_.xml" afterDir="false" />
+    <list default="true" id="b2e7eab6-d2a2-4503-a7d2-9488a041ac98" name="Changes" comment="Fifth chapter working.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/AbstractEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Spell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Composants/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Composants/Spell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/Spell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Composants/AbstractEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Composants/AbstractEnemy.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +91,7 @@
       <workItem from="1678374288848" duration="118000" />
       <workItem from="1678374437863" duration="1273000" />
       <workItem from="1678375713631" duration="12489000" />
+      <workItem from="1681246885013" duration="1747000" />
     </task>
     <task id="LOCAL-00001" summary="new commit">
       <created>1678375002702</created>
@@ -179,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679493970029</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fifth chapter working.">
+      <created>1680768691026</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680768691026</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +208,7 @@
     <MESSAGE value="You can now earn xp and level. Your stat will go up with a level up. you can learn Spell if you have the right level." />
     <MESSAGE value="Display of the Hp of wizard and enemy" />
     <MESSAGE value="Put down static for some function, you can now choose and use Potion from your inventory." />
-    <option name="LAST_COMMIT_MESSAGE" value="Put down static for some function, you can now choose and use Potion from your inventory." />
+    <MESSAGE value="Fifth chapter working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fifth chapter working." />
   </component>
 </project>
